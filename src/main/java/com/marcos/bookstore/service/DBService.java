@@ -4,11 +4,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+import com.marcos.bookstore.config.DevConfig;
 import com.marcos.bookstore.domain.Categoria;
 import com.marcos.bookstore.domain.Livro;
 import com.marcos.bookstore.repositories.CategoriaRepository;
 import com.marcos.bookstore.repositories.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 
 @Service
 public class DBService {
@@ -39,6 +41,14 @@ public class DBService {
 		
 		this.categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 		this.livroRepository.saveAll(Arrays.asList(l1,l2,l3,l4,l5,l6));
+    }
+
+    @Bean
+    public boolean instaciaBaseDeDados(DevConfig devConfig){
+        if(devConfig.strategy.equals("create"))
+            instaciaBaseDeDados();
+    
+        return false;
     }
     
 }
