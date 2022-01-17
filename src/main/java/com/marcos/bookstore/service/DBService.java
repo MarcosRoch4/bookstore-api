@@ -25,6 +25,7 @@ public class DBService {
         Categoria cat1 = new Categoria(null,"Informática","Livros de TI");
 		Categoria cat2 = new Categoria(null,"Ficção Científica","Livros de Ficção Científica");
 		Categoria cat3 = new Categoria(null,"Biografia","Livros de Biografia");
+		Categoria cat4 = new Categoria(null,"Romance","Livros de Romance");
 		
 
 		Livro l1 = new Livro(null, "Clean Code", "Robert Martin", "Lorem ipsum", cat1);
@@ -39,7 +40,7 @@ public class DBService {
 		cat2.getLivros().addAll(Arrays.asList(l3,l4));
 		cat3.getLivros().addAll(Arrays.asList(l5,l6));
 		
-		this.categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		this.categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3,cat4));
 		this.livroRepository.saveAll(Arrays.asList(l1,l2,l3,l4,l5,l6));
     }
 
