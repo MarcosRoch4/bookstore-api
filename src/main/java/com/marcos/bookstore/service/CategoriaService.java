@@ -6,10 +6,13 @@ import java.util.Optional;
 import com.marcos.bookstore.domain.Categoria;
 import com.marcos.bookstore.dtos.CategoriaDTO;
 import com.marcos.bookstore.repositories.CategoriaRepository;
+import com.marcos.bookstore.service.exceptions.DataIntegrityViolationException;
 import com.marcos.bookstore.service.exceptions.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ch.qos.logback.classic.spi.ThrowableProxyUtil;
 
 @Service
 public class CategoriaService {
@@ -41,7 +44,17 @@ public class CategoriaService {
 
     public void delete(Integer id) {
         findById(id);
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+
+            //throw new com.marcos.bookstore.service.exceptions.DataIntegrityViolationException(
+             //   "Categoria não pode ser deletada! Possui livros associados.");
+
+             throw (e);
+        }
+
+
     }
 
 }
