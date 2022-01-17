@@ -3,9 +3,10 @@ package com.marcos.bookstore.resources;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.marcos.bookstore.domain.Categoria;
-import com.marcos.bookstore.dtos.CategoriaDTO;
-import com.marcos.bookstore.service.CategoriaService;
+
+import com.marcos.bookstore.domain.Livro;
+import com.marcos.bookstore.dtos.LivroDTO;
+import com.marcos.bookstore.service.LivroService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,48 +21,47 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoriaResource {
-
+@RequestMapping(value = "/livros")
+public class LivroResource {
+    
     @Autowired
-    private CategoriaService service;
+    private LivroService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Categoria> findById(@PathVariable Integer id) {
-        Categoria obj = service.findById(id);
+    public ResponseEntity<Livro> findById(@PathVariable Integer id){
+        Livro obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
-
     }
-    
+
     @GetMapping
-    public ResponseEntity<List<CategoriaDTO>> findAll(){
-        List<Categoria> list = service.findAll();
-        List<CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(
+    public ResponseEntity<List<LivroDTO>> findAll(){
+        List<Livro> list = service.findAll();
+        List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(
             Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> create(@RequestBody Categoria obj){
+    public ResponseEntity<Livro> create(@RequestBody Livro obj){
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path(
             "/{id}").buildAndExpand(obj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
-
-        //return ResponseEntity.created(uri).body(obj);  pode ser utilizado dessa maneira tbm
+            return ResponseEntity.created(uri).build();
     }
-
+    
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CategoriaDTO> update(@PathVariable Integer id, @RequestBody CategoriaDTO objDto) {
-        Categoria newObj = service.update(id,objDto);
-        return ResponseEntity.ok().body(new CategoriaDTO(newObj));
-        
+    public ResponseEntity<LivroDTO> update(@PathVariable Integer id, @RequestBody LivroDTO objDTO){
+        Livro newObj = service.update(id, objDTO);
+        return ResponseEntity.ok().body(new LivroDTO(newObj));
+
     }
+
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id){
+    public ResponseEntity<LivroDTO> delete(@PathVariable Integer id){
         service.delete(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
+
 
 }
