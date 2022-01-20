@@ -35,7 +35,8 @@ public class LivroResource {
         return ResponseEntity.ok().body(obj);
     }
 
-    /* -- Como eu fiz
+     // Como eu fiz
+
     @GetMapping
     public ResponseEntity<List<LivroDTO>> findAll(){
         List<Livro> list = service.findAll();
@@ -43,16 +44,18 @@ public class LivroResource {
             Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
-    */
+    
 
     // Como foi ensinado à fazer
+  /* 
     @GetMapping
     public ResponseEntity<List<LivroDTO>> findAll(@RequestParam(value = "categoria",defaultValue = "0") Integer id_cat){
         List<Livro> list = service.findAll(id_cat);
         List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
-
+    
+*/
   /*  @PostMapping
     public ResponseEntity<Livro> create(@RequestBody Livro obj){
         obj = service.create(obj);
@@ -86,12 +89,23 @@ public class LivroResource {
 
     }
 
-
+    //Feiot por mim
+/* 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<LivroDTO> delete(@PathVariable Integer id){
         service.delete(id);
         return ResponseEntity.ok().build();
     }
 
+    */
+
+
+    // Como foi ensinado
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<LivroDTO> delete(@PathVariable Integer id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
