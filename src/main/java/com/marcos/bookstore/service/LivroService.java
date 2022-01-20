@@ -65,7 +65,8 @@ private void updateData(Livro newObj,Livro obj){
     newObj.setNome_autor(obj.getNome_autor());
 }
 
-
+// Feito por mim
+/*
     public void delete(Integer id){
         findById(id);
         try {
@@ -77,5 +78,13 @@ private void updateData(Livro newObj,Livro obj){
 
     }
 
+    */
+
+
+    // Como foi ensinado
+    public void delete(Integer id){
+        Livro obj = findById(id);
+        repository.delete(obj);
+    }
 
 }
