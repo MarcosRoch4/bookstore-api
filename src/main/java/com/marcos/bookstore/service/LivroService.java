@@ -3,6 +3,7 @@ package com.marcos.bookstore.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.marcos.bookstore.domain.Categoria;
 import com.marcos.bookstore.domain.Livro;
 import com.marcos.bookstore.dtos.LivroDTO;
 import com.marcos.bookstore.repositories.CategoriaRepository;
@@ -42,8 +43,11 @@ public class LivroService {
         return repository.findAllByCategoria(id_cat);
     }
 
-    public Livro create(Livro obj){
+    public Livro create(Integer id_cat,Livro obj){
         obj.setId(null);
+        Categoria cat = categoriaService.findById(id_cat);
+        obj.setCategoria(cat);
+
         return repository.save(obj);
     }
 
