@@ -44,6 +44,7 @@ public class DBService {
 		this.livroRepository.saveAll(Arrays.asList(l1,l2,l3,l4,l5,l6));
     }
 
+	/*
     @Bean
     public boolean instaciaBaseDeDados(DevConfig devConfig){
         if(devConfig.strategy.equals("create"))
@@ -52,4 +53,6 @@ public class DBService {
         return false;
     }
     
+
+	*/
 }

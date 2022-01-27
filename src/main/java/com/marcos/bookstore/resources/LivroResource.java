@@ -48,18 +48,22 @@ public class LivroResource {
             Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
-    
+   
 
     // Como foi ensinado à fazer
-  /* 
+  /**
+   * 
+   * 
     @GetMapping
     public ResponseEntity<List<LivroDTO>> findAll(@RequestParam(value = "categoria",defaultValue = "0") Integer id_cat){
         List<Livro> list = service.findAll(id_cat);
         List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }
+   */
+   
     
-*/
+
   /*  @PostMapping
     public ResponseEntity<Livro> create(@RequestBody Livro obj){
         obj = service.create(obj);

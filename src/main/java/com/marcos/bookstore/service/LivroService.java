@@ -42,8 +42,8 @@ public class LivroService {
 
         return repository.findAllByCategoria(id_cat);
     }
-  */
-
+  
+*/
     public Livro create(Integer id_cat,Livro obj){
         obj.setId(null);
         Categoria cat = categoriaService.findById(id_cat);
