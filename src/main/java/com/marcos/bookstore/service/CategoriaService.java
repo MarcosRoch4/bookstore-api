@@ -6,10 +6,10 @@ import java.util.Optional;
 import com.marcos.bookstore.domain.Categoria;
 import com.marcos.bookstore.dtos.CategoriaDTO;
 import com.marcos.bookstore.repositories.CategoriaRepository;
-import com.marcos.bookstore.service.exceptions.DataIntegrityViolationException;
 import com.marcos.bookstore.service.exceptions.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 

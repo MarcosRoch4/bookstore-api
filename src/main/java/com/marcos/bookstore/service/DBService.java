@@ -2,14 +2,14 @@ package com.marcos.bookstore.service;
 
 import java.util.Arrays;
 
-import com.marcos.bookstore.config.DevConfig;
+//import com.marcos.bookstore.config.DevConfig;
 import com.marcos.bookstore.domain.Categoria;
 import com.marcos.bookstore.domain.Livro;
 import com.marcos.bookstore.repositories.CategoriaRepository;
-import com.marcos.bookstore.repositories.LivrosRepository;
+import com.marcos.bookstore.repositories.LivroRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,7 +18,7 @@ public class DBService {
     @Autowired
 	private CategoriaRepository categoriaRepository;
 	@Autowired
-	private LivrosRepository livroRepository;
+	private LivroRepository livroRepository;
 
     public void instaciaBaseDeDados(){
 

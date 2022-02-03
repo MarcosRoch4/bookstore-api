@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.marcos.bookstore.domain.Categoria;
 import com.marcos.bookstore.domain.Livro;
-import com.marcos.bookstore.repositories.LivrosRepository;
+import com.marcos.bookstore.repositories.LivroRepository;
 import com.marcos.bookstore.service.exceptions.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class LivroService {
     
     @Autowired
-    private LivrosRepository repository;
+    private LivroRepository repository;
 
     @Autowired
     private CategoriaService categoriaService;
@@ -29,21 +29,21 @@ public class LivroService {
     }
 
      // Como eu fiz
-
+/*
     public List<Livro> findAll(){
         return repository.findAll();
     }
-
+*/
 
     // Como foi ensinado à fazer
-  /*
+  
     public List<Livro> findAll(Integer id_cat){
         categoriaService.findById(id_cat);
 
         return repository.findAllByCategoria(id_cat);
     }
   
-*/
+
     public Livro create(Integer id_cat,Livro obj){
         obj.setId(null);
         Categoria cat = categoriaService.findById(id_cat);
